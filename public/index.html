@@ -1,6 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
-      Hello
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alphabet Game</title>
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+    <style type="text/css">
+      html,
+      body {
+          font-family: 'Open Sans';
+          background-image: url("res/waterfallGif.gif");
+          color: white;
+          background-size: cover;
+          background-color: cyan;
+      }
+
+      img {
+          padding: 5px;
+          border: 1px solid #ccc;
+      }
+
+      .welcome{
+          color:white
+      }
+
+    </style>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/8.3.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.3.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <script defer src="js/signIn.js"></script>
   </head>
+  <body>
+
+    <section class="hero is-fullheight is-default is-bold">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="columns is-vcentered">
+                    <div class="column is-4">
+                        <h1 class="title is-1 welcome">
+                            <b>Welcome to the Alphabet Game!</b>
+                        </h1>
+                        <h2 class="subtitle is-4 welcome">
+                            Log in to start practicing your writing skills!
+                        </h2>
+                        <br>
+                        <p class="has-text-centered">
+                            <a class="button is-large is-primary" onclick="signIn()">
+                                Sign In
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    
+  </body>
 </html>
