@@ -1,6 +1,8 @@
 //-------------------
 // GLOBAL variables
 //-------------------
+let model;
+
 var canvasWidth = 300;
 var canvasHeight = 300;
 var canvasStrokeStyle = "black";
