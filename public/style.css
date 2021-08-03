@@ -117,3 +117,8 @@ div {
     margin-right: auto;
     display: block;
 }
+
+.section-spacing {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
