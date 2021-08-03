@@ -1,50 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Numbers Game</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-  <link rel="stylesheet" href="style.css" type="text/css">
-</head>
-<body>
-  <section style="background-color:cyan;" class="hero has-text-centered">
-    <div class="hero-body">
-      <p class="title is-size-1">
-        Number Game
-      </p>
-      <p class="subtitle is-size-3">
-        Learn numbers with this fun game!
-      </p>
-    </div>
-  </section>
-  <section>
-  
-  </section>    
-    <div>
-      <canvas id="canvas" width="400" height="400"></canvas>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numbers Game</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <section style="background-color:cyan;" class="hero has-text-centered">
+      <div class="hero-body">
+        <p class="title is-size-1">
+          Number Game
+        </p>
+        <p class="subtitle is-size-3">
+          Learn numbers with this fun game!
+        </p>
+      </div>
+    </section>
+    <div class="columns is-centered is-variable is-5">
+      <div class="section-spacing column is-one-quarter mr-2 pt-6">
+        <canvas id="canvas" width="400" height="400"></canvas>
+      </div>
+      <div class="column is-one-quarter is-align-content-end ml-2 pt-6">
+        <img
+          src="https://media.istockphoto.com/vectors/cookie-jar-vector-icon-chocolate-chip-cookies-in-a-jar-color-vector-id988193482?k=6&m=988193482&s=170667a&w=0&h=KN3g9dUHhWHLtEaS5wVMI3F9Vh5V0OZjCEz6mooz0SM="
+          alt="random placeholder image"
+          width="400"
+          height="400"
+        />
+      </div>
     </div>
     <div class="instructions text container">
       <p>Guess the number!!!</p>
     </div>
-    <div class = "container">
-      <button class="text" id="submit-canvas" onclick="this.blur()">submit</button>
-      <button class="text" id="clear-canvas" onclick="this.blur()">Clear</button>
+    <div class="container">
+      <button class="text" id="submit-canvas" onclick="this.blur()">
+        submit
+      </button>
+      <button class="text" id="clear-canvas" onclick="this.blur()">
+        Clear
+      </button>
     </div>
-    <section class = "container section-spacing">
-      <button class="text" id="back-home" onclick="window.location.href='index.html'">Back to Menu</button>
+    <section class="container section-spacing">
+      <button
+        class="text"
+        id="back-home"
+        onclick="window.location.href='index.html'"
+      >
+        Back to Menu
+      </button>
     </section>
     <div>
       <svg id="svg-chart"></svg>
     </div>
-      </div>
-    </div>
-    <canvas id="scaled-canvas" style="display:none" width="28" height="28"></canvas>
-  </div>
-  <div class="footer">
-  <script src="script.js" type="text/javascript" defer></script>
-</body>
 
+    <canvas
+      id="scaled-canvas"
+      style="display:none"
+      width="28"
+      height="28"
+    ></canvas>
+    <div class="footer"></div>
+    <script src="script.js" type="text/javascript" defer></script>
+  </body>
 </html>
