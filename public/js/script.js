@@ -1,3 +1,15 @@
+let googleUser; 
+window.onload = (event) => { 
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log('Logged in as: ' + user.displayName);
+            googleUser = user;
+        } else {
+            window.location = 'index.html'; // If not logged in, navigate back to login page.
+        }
+    });
+};
+
 //------------------------
 // DISPLAYING RANDOM IMAGE
 //------------------------
@@ -205,22 +217,6 @@ $("#clear-button").click(async function() {
   $(".prediction-text").empty();
   $("#result_box").addClass("d-none");
 });
-
-
-//------------------------
-// STORING USER SCORES
-//------------------------
-let googleUser; 
-window.onload = (event) => { 
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            console.log('Logged in as: ' + user.displayName);
-            googleUser = user;
-        } else {
-            window.location = 'index.html'; // If not logged in, navigate back to login page.
-        }
-    });
-};
 
 //-------------------------------------
 // loader for handwritten model
