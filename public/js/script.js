@@ -210,32 +210,31 @@ $("#clear-button").click(async function() {
 //------------------------
 // STORING USER SCORES
 //------------------------
-//let googleUser; 
-//window.onload = (event) => { 
-  // get info about who's logged in -> to be used later when storing their score
-//  firebase.auth().onAuthStateChanged(function(user) {
-//    if (user) {
-//      console.log('Logged in as: ' + user.displayName);
-//      googleUser = user;
-//    } else {
-//      window.location = 'index.html'; // If not logged in, navigate back to login page.
-//    }
-//  });
-//};
+let googleUser; 
+window.onload = (event) => { 
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log('Logged in as: ' + user.displayName);
+            googleUser = user;
+        } else {
+            window.location = 'index.html'; // If not logged in, navigate back to login page.
+        }
+    });
+};
 
 //-------------------------------------
-// loader for cnn model
+// loader for handwritten model
 //-------------------------------------
-// async function loadModel() {
-//   console.log("model loading..");
+async function loadModel() {
+  console.log("loading the model");
 
 //   // clear the model variable
-//   model = undefined;
+  model = undefined;
 
-//   // load the model using a HTTPS request (where you have stored your model files)
-//   model = await tf.loadLayersModel("/models/handwritten_digit/model.json");
+// load the model using a HTTPS request (where you have stored your model files)
+  model = await tf.loadLayersModel("/models/handwritten_digit/model.json");
 
-//   console.log("model loaded..");
+  console.log("model loaded..");
 // }
 
 // loadModel();
@@ -243,18 +242,18 @@ $("#clear-button").click(async function() {
 //-----------------------------------------------
 // preprocess the canvas
 //-----------------------------------------------
-// function preprocessCanvas(image) {
-//   // resize the input image to target size of (1, 28, 28)
-//   let tensor = tf.browser
-//     .fromPixels(image)
-//     .resizeNearestNeighbor([28, 28])
-//     .mean(2)
-//     .expandDims(2)
-//     .expandDims()
-//     .toFloat();
-//   console.log(tensor.shape);
-//   return tensor.div(255.0);
-// }
+function preprocessCanvas(image) {
+  // resize the image to 28 by 28 pixels
+  let tensor = tf.browser
+    .fromPixels(image)
+    .resizeNearestNeighbor([28, 28])
+    .mean(2)
+    .expandDims(2)
+    .expandDims()
+    .toFloat();
+  console.log(tensor.shape);
+  return tensor.div(255.0);
+}
 
 //--------------------------------------------
 // predict function
@@ -346,4 +345,3 @@ $("#clear-button").click(async function() {
 //       "%</b> confidence"
 //   );
 // }
-
