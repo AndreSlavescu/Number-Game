@@ -224,16 +224,14 @@ $("#clear-button").click(async function() {
 async function loadModel() {
   console.log("loading the model");
 
-//   // clear the model variable
+  // clear the model variable
   model = undefined;
-
-// load the model using a HTTPS request (where you have stored your model files)
+  // load the model using a HTTPS request (where you have stored your model files)
   model = await tf.loadLayersModel("models/model.json");
 
   console.log("loaded model");
 
-}
-// }
+};
 
 loadModel();
 
