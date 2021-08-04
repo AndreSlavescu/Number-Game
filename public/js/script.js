@@ -227,7 +227,7 @@ async function loadModel() {
   // clear the model variable
   model = undefined;
   // load the model using a HTTPS request (where you have stored your model files)
-  model = await tf.loadLayersModel("models/model.json");
+  model = await tf.loadLayersModel("test-model/test-model.json");
 
   console.log("loaded model");
 
@@ -260,6 +260,7 @@ $("#predict-button").click(async function() {
   let tensor = preprocessCanvas(canvas);
   // make predictions on the image
   let predictions = await model.predict(tensor).data();
+  console.log(predictions)
   // display prediction results
   let results = Array.from(predictions);
   console.log(results);
