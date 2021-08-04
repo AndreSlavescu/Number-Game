@@ -10,6 +10,12 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
     />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/8.3.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.3.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
   </head>
@@ -30,16 +36,17 @@
         </div>
       </div>
       <div class="column is-one-quarter is-align-content-end ml-2 pt-6">
-        <img
-          src="https://media.istockphoto.com/vectors/cookie-jar-vector-icon-chocolate-chip-cookies-in-a-jar-color-vector-id988193482?k=6&m=988193482&s=170667a&w=0&h=KN3g9dUHhWHLtEaS5wVMI3F9Vh5V0OZjCEz6mooz0SM="
+        <img hidden
+          src=""
           alt="random placeholder image"
           width="400"
           height="400"
+          id = "img"
         />
       </div>
     </div>
     <div class="instructions text container">
-      <p>Guess the number!!!</p>
+      <p>How many apples are on the tree?</p>
     </div>
     <div class="container">
       <button class="text" id="predict-button" onclick="this.blur()">

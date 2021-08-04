@@ -1,3 +1,19 @@
+//------------------------
+// DISPLAYING RANDOM IMAGE
+//------------------------
+const displayImg = (n) =>{
+    const imgRef = firebase.database().ref(`images/${n}`);
+    imgRef.on('value', (snapshot) =>{
+        let link = snapshot.val();
+        document.getElementById("img").src = link;
+        document.getElementById("img").hidden = false;
+        return link;
+    });
+}
+let number = Math.floor(Math.random() * 10);
+console.log(number);
+displayImg(number);
+
 //-------------------
 // GLOBAL variables
 //-------------------
@@ -190,6 +206,23 @@ $("#clear-button").click(async function() {
   $("#result_box").addClass("d-none");
 });
 
+
+//------------------------
+// STORING USER SCORES
+//------------------------
+//let googleUser; 
+//window.onload = (event) => { 
+  // get info about who's logged in -> to be used later when storing their score
+//  firebase.auth().onAuthStateChanged(function(user) {
+//    if (user) {
+//      console.log('Logged in as: ' + user.displayName);
+//      googleUser = user;
+//    } else {
+//      window.location = 'index.html'; // If not logged in, navigate back to login page.
+//    }
+//  });
+//};
+
 //-------------------------------------
 // loader for cnn model
 //-------------------------------------
@@ -313,3 +346,4 @@ $("#clear-button").click(async function() {
 //       "%</b> confidence"
 //   );
 // }
+
