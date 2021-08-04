@@ -231,6 +231,8 @@ async function loadModel() {
   model = await tf.loadLayersModel("/models/handwritten_digit/model.json");
 
   console.log("model loaded..");
+
+}
 // }
 
 // loadModel();
@@ -249,7 +251,7 @@ function preprocessCanvas(image) {
     .toFloat();
   console.log(tensor.shape);
   return tensor.div(255.0);
-}
+};
 
 //--------------------------------------------
 // predict function
