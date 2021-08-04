@@ -227,9 +227,11 @@ async function loadModel() {
   // clear the model variable
   model = undefined;
   // load the model using a HTTPS request (where you have stored your model files)
-  model = await tf.loadLayersModel("test-model/test-model.json");
+//   model = await tf.loadLayersModel("test-model/test-model.json");
+  model = await tf.loadLayersModel("models/model.json");
 
   console.log("loaded model");
+  console.log(model)
 
 };
 
@@ -244,7 +246,6 @@ function preprocessCanvas(image) {
     .fromPixels(image)
     .resizeNearestNeighbor([28, 28])
     .mean(2)
-    .expandDims(2)
     .expandDims()
     .toFloat();
   console.log(tensor.shape);
@@ -260,7 +261,6 @@ $("#predict-button").click(async function() {
   let tensor = preprocessCanvas(canvas);
   // make predictions on the image
   let predictions = await model.predict(tensor).data();
-  console.log(predictions)
   // display prediction results
   let results = Array.from(predictions);
   console.log(results);
