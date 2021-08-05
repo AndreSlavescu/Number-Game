@@ -13,10 +13,11 @@ window.onload = (event) => {
 //------------------------
 // DISPLAYING RANDOM IMAGE
 //------------------------
-
+let number;
 const displayImg = () =>{
     let n = Math.floor(Math.random() * 10);
     console.log(n);
+    number = n;
     let obj = Math.floor(Math.random()*2); 
 
     const imgRef = firebase.database().ref(`images/${n}/${obj}`);
@@ -281,6 +282,7 @@ $("#predict-button").click(async function() {
   res = results.indexOf(Math.max.apply(null, results))
   console.log(res);
   var totalScore = 0
+  
   if (res == number){
       console.log("Yes")
       totalScore ++;
