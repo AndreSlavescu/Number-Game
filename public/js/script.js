@@ -13,6 +13,7 @@ window.onload = (event) => {
 //------------------------
 // DISPLAYING RANDOM IMAGE
 //------------------------
+
 const displayImg = (n, obj) =>{
     const imgRef = firebase.database().ref(`images/${n}/${obj}`);
     imgRef.on('value', (snapshot) =>{
@@ -42,7 +43,7 @@ var canvasWidth = 300;
 var canvasHeight = 300;
 var canvasStrokeStyle = "black";
 var canvasLineJoin = "round";
-var canvasLineWidth = 10;
+var canvasLineWidth = 25;
 var canvasBackgroundColor = "white";
 var canvasId = "canvas";
 
@@ -62,11 +63,13 @@ canvas.setAttribute("height", canvasHeight);
 canvas.setAttribute("id", canvasId);
 canvas.style.backgroundColor = canvasBackgroundColor;
 canvasBox.appendChild(canvas);
-// if (typeof G_vmlCanvasManager != "undefined") {
-//   canvas = G_vmlCanvasManager.initElement(canvas);
-// }
 
 let ctx = canvas.getContext("2d");
+
+ctx.beginPath();
+ctx.rect(0, 0, 300, 300);
+ctx.fillStyle = "white";
+ctx.fill();
 
 //---------------------
 // MOUSE DOWN function
@@ -194,7 +197,6 @@ function addUserGesture(x, y, dragging) {
 // RE DRAW function
 //-------------------
 function drawOnCanvas() {
-  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
   ctx.strokeStyle = canvasStrokeStyle;
   ctx.lineJoin = canvasLineJoin;
@@ -223,6 +225,10 @@ $("#clear-button").click(async function() {
   clickD = new Array();
   $(".prediction-text").empty();
   $("#result_box").addClass("d-none");
+  ctx.beginPath();
+  ctx.rect(0, 0, 300, 300);
+  ctx.fillStyle = "white";
+  ctx.fill();
 });
 
 //-------------------------------------
@@ -234,8 +240,7 @@ async function loadModel() {
   // clear the model variable
   model = undefined;
   // load the model using a HTTPS request (where you have stored your model files)
-//   model = await tf.loadLayersModel("test-model/test-model.json");
-  model = await tf.loadLayersModel("models/model.json");
+  model = await tf.loadLayersModel("models/model (1).json");
 
   console.log("loaded model");
   console.log(model)
@@ -255,8 +260,9 @@ function preprocessCanvas(image) {
     .mean(2)
     .expandDims()
     .toFloat();
-  console.log(tensor.shape);
-  return tensor.div(255.0);
+// equivalent of 1-tensor.div(255.0)
+  tensor = tensor.div(255.0).mul(-1.0).add(1.0)
+  return tensor
 };
 
 //--------------------------------------------
@@ -269,6 +275,13 @@ $("#predict-button").click(async function() {
   // make predictions on the image
   let predictions = await model.predict(tensor).data();
   // display prediction results
+//   console.log(Array.from(tf.argMax(predictions, 1)))
   let results = Array.from(predictions);
-  console.log(results);
+  res = results.indexOf(Math.max.apply(null, results))
+  console.log(res);
+  if (res == number){
+      console.log("Yes")
+  } else {
+      console.log("No")
+  }
 });
