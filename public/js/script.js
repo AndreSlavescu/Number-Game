@@ -13,18 +13,6 @@ window.onload = (event) => {
 //------------------------
 // DISPLAYING RANDOM IMAGE
 //------------------------
-// const displayImg = (n) =>{
-//     const imgRef = firebase.database().ref(`images/${n}`);
-//     imgRef.on('value', (snapshot) =>{
-//         let link = snapshot.val();
-//         document.getElementById("img").src = link;
-//         document.getElementById("img").hidden = false;
-//         return link;
-//     });
-// }
-// let number = Math.floor(Math.random() * 10);
-// console.log(number);
-// displayImg(number);
 
 const displayImg = (n, obj) =>{
     const imgRef = firebase.database().ref(`images/${n}/${obj}`);
@@ -291,9 +279,16 @@ $("#predict-button").click(async function() {
   let results = Array.from(predictions);
   res = results.indexOf(Math.max.apply(null, results))
   console.log(res);
+  var totalScore = 0
   if (res == number){
       console.log("Yes")
+      totalScore ++;
   } else {
       console.log("No")
+      totalScore = 0
   }
+  const yourGuess = document.querySelector("#your-guess")
+  yourGuess.innerHTML = "Your guess: " + res;
+  const yourScore = document.querySelector("#your-score")
+  yourScore.innerHTML = "Your score: " + totalScore;
 });
