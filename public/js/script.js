@@ -13,10 +13,15 @@ window.onload = (event) => {
 //------------------------
 // DISPLAYING RANDOM IMAGE
 //------------------------
-const displayImg = (n) =>{
-    const imgRef = firebase.database().ref(`images/${n}`);
+const displayImg = (n, obj) =>{
+    const imgRef = firebase.database().ref(`images/${n}/${obj}`);
     imgRef.on('value', (snapshot) =>{
         let link = snapshot.val();
+        if (obj == 0){
+            document.getElementById("instructions").innerHTML = "How many apples are on the tree?";
+        } else{
+            document.getElementById("instructions").innerHTML = "How many cookies do you see?"
+        }
         document.getElementById("img").src = link;
         document.getElementById("img").hidden = false;
         return link;
@@ -24,7 +29,9 @@ const displayImg = (n) =>{
 }
 let number = Math.floor(Math.random() * 10);
 console.log(number);
-displayImg(number);
+let object = Math.floor(Math.random()*2); 
+
+displayImg(number, object);
 
 //-------------------
 // GLOBAL variables
