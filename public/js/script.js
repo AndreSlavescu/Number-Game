@@ -292,3 +292,4 @@ $("#predict-button").click(async function() {
   const yourScore = document.querySelector("#your-score")
   yourScore.innerHTML = "Your score: " + totalScore;
 });
+
