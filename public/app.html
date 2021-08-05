@@ -19,8 +19,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
   </head>
-  <body style=" background-image: url('res/templeWaterfall.gif');">
-    <section style="background-color:rgba(16, 247, 247, 0.527);" class="hero has-text-centered">
+  <body>
+    <section style="background-color:cyan;" class="hero has-text-centered">
       <div class="hero-body">
         <p class="title is-size-1">
           Number Game
@@ -30,6 +30,9 @@
         </p>
       </div>
     </section>
+    <div id ="your-score" class="text container section-spacing">
+      <p>Your Score: </p>
+    </div>
     <div class="columns is-centered is-variable is-5">
       <div class="section-spacing column is-one-quarter mr-2 pt-6">
         <div id="canvas_box" class="canvas-box">
@@ -46,7 +49,10 @@
       </div>
     </div>
     <div class="instructions text container">
-      <p id = "instructions">How many apples are on the tree?</p>
+      <p id = "instructions">How many apples or cookies do you see?</p>
+    </div>
+    <div id = "your-guess" class="instructions text container">
+      <p>Your guess: </p>
     </div>
     <div class="container">
       <button class="text" id="predict-button" onclick="this.blur()">
