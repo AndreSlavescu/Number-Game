@@ -267,6 +267,8 @@ function preprocessCanvas(image) {
   return tensor
 };
 
+var totalScore = 0;
+
 //--------------------------------------------
 // predict function
 //--------------------------------------------
@@ -281,19 +283,17 @@ $("#predict-button").click(async function() {
   let results = Array.from(predictions);
   res = results.indexOf(Math.max.apply(null, results))
   console.log(res);
-  var totalScore = 0
-  
+  const yourScore = document.querySelector("#your-score")
+  const yourGuess = document.querySelector("#your-guess")
   if (res == number){
       console.log("Yes")
-      totalScore ++;
+      totalScore += 1
   } else {
       console.log("No")
       totalScore = 0
   }
-  const yourGuess = document.querySelector("#your-guess")
-  yourGuess.innerHTML = "Your guess: " + res;
-  const yourScore = document.querySelector("#your-score")
   yourScore.innerHTML = "Your score: " + totalScore;
+  yourGuess.innerHTML = "Your guess: " + res;
   displayImg();
 });
 
