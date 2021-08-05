@@ -1,8 +1,7 @@
 html, body{
     background-image: url("res/waterfallGif.gif");
-    color: white;
+    color: black;
     background-size: cover;
-    overflow:hidden;
 }
 
 .container {
