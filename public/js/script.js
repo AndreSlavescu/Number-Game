@@ -279,9 +279,16 @@ $("#predict-button").click(async function() {
   let results = Array.from(predictions);
   res = results.indexOf(Math.max.apply(null, results))
   console.log(res);
+  var totalScore = 0
   if (res == number){
       console.log("Yes")
+      totalScore ++;
   } else {
       console.log("No")
+      totalScore = 0
   }
+  const yourGuess = document.querySelector("#your-guess")
+  yourGuess.innerHTML = "Your guess: " + res;
+  const yourScore = document.querySelector("#your-score")
+  yourScore.innerHTML = "Your score: " + totalScore;
 });
