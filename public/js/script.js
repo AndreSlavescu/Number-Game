@@ -14,7 +14,11 @@ window.onload = (event) => {
 // DISPLAYING RANDOM IMAGE
 //------------------------
 
-const displayImg = (n, obj) =>{
+const displayImg = () =>{
+    let n = Math.floor(Math.random() * 10);
+    console.log(n);
+    let obj = Math.floor(Math.random()*2); 
+
     const imgRef = firebase.database().ref(`images/${n}/${obj}`);
     imgRef.on('value', (snapshot) =>{
         let link = snapshot.val();
@@ -28,11 +32,8 @@ const displayImg = (n, obj) =>{
         return link;
     });
 }
-let number = Math.floor(Math.random() * 10);
-console.log(number);
-let object = Math.floor(Math.random()*2); 
 
-displayImg(number, object);
+displayImg();
 
 //-------------------
 // GLOBAL variables
@@ -291,5 +292,6 @@ $("#predict-button").click(async function() {
   yourGuess.innerHTML = "Your guess: " + res;
   const yourScore = document.querySelector("#your-score")
   yourScore.innerHTML = "Your score: " + totalScore;
+  displayImg();
 });
 
