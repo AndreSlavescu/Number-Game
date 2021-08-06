@@ -283,8 +283,8 @@ $("#predict-button").click(async function() {
   let results = Array.from(predictions);
   res = results.indexOf(Math.max.apply(null, results))
   console.log(res);
-  const yourScore = document.querySelector("#your-score")
-  const yourGuess = document.querySelector("#your-guess")
+  const yourScore = document.querySelector("#style_Score")
+  const yourGuess = document.querySelector("#style_Guess")
   if (res == number){
       console.log("Yes")
       totalScore += 1
@@ -294,6 +294,14 @@ $("#predict-button").click(async function() {
   }
   yourScore.innerHTML = "Your score: " + totalScore;
   yourGuess.innerHTML = "Your guess: " + res;
+  
+  //Only styling:
+
+  yourScore.style.backgroundColor ="rgba(20, 250, 250, 0.562)";
+  yourScore.style.weight="bold";
+  yourGuess.style.backgroundColor="rgba(20, 250, 250, 0.562)";
+  yourGuess.style.weight="bold";
+
   displayImg();
 });
 
