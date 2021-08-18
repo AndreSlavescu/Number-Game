@@ -1,7 +1,7 @@
 # Number-Game
 Google CSSI Final Project
 
-A game to teach kids how to count and write numbers! 
+A game to teach kids how to recognize and write numbers! 
 
 **Overview**
 
