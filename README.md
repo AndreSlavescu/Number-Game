@@ -1,5 +1,5 @@
 # Number-Game
-Google CSSI Final Project
+Google CSSI Final Project (DEMO: http://bit.ly/num-game)
 
 A game to teach kids how to recognize and write numbers! 
 
